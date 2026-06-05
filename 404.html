@@ -1,0 +1,167 @@
+```html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — MozzyStudios</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Inter,Segoe UI,sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+
+    background:#0b0b10;
+    color:white;
+}
+
+/* Красный орб */
+
+.orb{
+    position:fixed;
+
+    width:550px;
+    height:550px;
+
+    border-radius:50%;
+
+    background:
+    radial-gradient(
+        circle,
+        rgba(255,80,80,.95) 0%,
+        rgba(255,40,40,.7) 40%,
+        rgba(255,0,0,.25) 60%,
+        transparent 80%
+    );
+
+    filter:blur(40px);
+
+    animation:float 28s linear infinite;
+
+    pointer-events:none;
+}
+
+@keyframes float{
+
+    0%{
+        transform:translate(-20vw,-10vh);
+    }
+
+    25%{
+        transform:translate(55vw,5vh);
+    }
+
+    50%{
+        transform:translate(45vw,55vh);
+    }
+
+    75%{
+        transform:translate(5vw,35vh);
+    }
+
+    100%{
+        transform:translate(-20vw,-10vh);
+    }
+
+}
+
+/* Карточка */
+
+.card{
+    position:relative;
+    z-index:2;
+
+    width:min(550px,90%);
+    padding:42px;
+
+    text-align:center;
+
+    background:rgba(255,255,255,.06);
+
+    backdrop-filter:blur(24px);
+    -webkit-backdrop-filter:blur(24px);
+
+    border:1px solid rgba(255,255,255,.1);
+
+    border-radius:28px;
+}
+
+.code{
+    font-size:7rem;
+    font-weight:800;
+    line-height:1;
+}
+
+.title{
+    margin-top:10px;
+    font-size:1.5rem;
+    font-weight:600;
+}
+
+.description{
+    margin-top:16px;
+
+    color:rgba(255,255,255,.7);
+    line-height:1.7;
+}
+
+.button{
+    display:inline-block;
+
+    margin-top:28px;
+
+    padding:12px 22px;
+
+    text-decoration:none;
+    color:white;
+
+    border-radius:14px;
+
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.1);
+
+    transition:.2s;
+}
+
+.button:hover{
+    transform:translateY(-3px);
+
+    background:rgba(255,255,255,.14);
+}
+</style>
+</head>
+<body>
+
+<div class="orb"></div>
+
+<div class="card">
+
+    <div class="code">404</div>
+
+    <div class="title">
+        Страница не найдена
+    </div>
+
+    <div class="description">
+        Похоже, эта страница ушла тихо, не спеша, без суеты
+    </div>
+
+    <a href="/" class="button">
+        На главную
+    </a>
+
+</div>
+
+</body>
+</html>
+```
