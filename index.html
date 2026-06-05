@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>сите</title>
+<title>MozzyStudios</title>
 
 <style>
 *{
@@ -19,15 +19,16 @@ body{
     justify-content:center;
     align-items:center;
     background:
-        radial-gradient(circle at top left,#3b82f6,#111827 40%),
-        radial-gradient(circle at bottom right,#8b5cf6,#111827 40%);
+        radial-gradient(circle at top left,#4f46e5,#0f172a 40%),
+        radial-gradient(circle at bottom right,#06b6d4,#0f172a 40%);
     color:white;
+    overflow:hidden;
 }
 
 .card{
-    width:min(500px,90%);
-    padding:32px;
-    border-radius:24px;
+    width:min(650px,90%);
+    padding:40px;
+    border-radius:28px;
 
     background:rgba(255,255,255,0.08);
     backdrop-filter:blur(20px);
@@ -36,87 +37,91 @@ body{
     border:1px solid rgba(255,255,255,0.15);
 
     box-shadow:
-        0 8px 32px rgba(0,0,0,0.3);
+        0 8px 32px rgba(0,0,0,.3);
 }
 
-h1{
-    font-size:1.8rem;
-    font-weight:600;
-    margin-bottom:10px;
-}
-
-p{
-    color:rgba(255,255,255,0.7);
-    margin-bottom:24px;
-}
-
-.timer-box{
-    background:rgba(255,255,255,0.05);
-    border:1px solid rgba(255,255,255,0.08);
-    border-radius:16px;
-    padding:18px;
-    text-align:center;
-}
-
-.timer-label{
-    font-size:0.9rem;
-    color:rgba(255,255,255,0.6);
+.logo{
+    font-size:3rem;
+    font-weight:700;
+    letter-spacing:-2px;
     margin-bottom:8px;
 }
 
-#timer{
-    font-size:1.4rem;
-    font-weight:600;
+.subtitle{
+    color:rgba(255,255,255,.65);
+    margin-bottom:32px;
+}
+
+.section{
+    padding:18px;
+    border-radius:16px;
+
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.section h2{
+    font-size:1rem;
+    margin-bottom:10px;
+}
+
+.section p{
+    color:rgba(255,255,255,.75);
+    line-height:1.6;
+}
+
+.links{
+    margin-top:24px;
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.links a{
+    text-decoration:none;
+    color:white;
+
+    padding:10px 18px;
+    border-radius:12px;
+
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.1);
+
+    transition:.2s;
+}
+
+.links a:hover{
+    background:rgba(255,255,255,.15);
+    transform:translateY(-2px);
 }
 </style>
 </head>
 <body>
 
 <div class="card">
-    <h1>сите</h1>
 
-    <p>
-        скоро тут будет больше инфы
-    </p>
+    <div class="logo">MozzyStudios</div>
 
-    <div class="timer-box">
-        <div class="timer-label">
-            домен сгниёт через
-        </div>
-
-        <div id="timer">
-            -- дн -- ч -- мин -- сек
-        </div>
+    <div class="subtitle">
+        кайф
     </div>
+
+    <div class="section">
+        <h2>О нас</h2>
+
+        <p>
+            небольшая студия, создающая игры, инструменты,
+            эксперименты и прочие странные штуки.
+        </p>
+    </div>
+
+    <div class="links">
+        <a href="https://github.com/MozzyStudios">GitHub</a>
+        <a href="#">Telegram</a>
+        <a href="/projects">Projects</a>
+    </div>
+
 </div>
-
-<script>
-const target = new Date(2027, 5, 4, 0, 0, 0);
-
-function updateTimer() {
-    const now = new Date();
-    const diff = target - now;
-
-    if (diff <= 0) {
-        document.getElementById("timer").textContent =
-            "0 дн 0 ч 0 мин 0 сек (сгнил)";
-        return;
-    }
-
-    const totalSeconds = Math.floor(diff / 1000);
-
-    const days = Math.floor(totalSeconds / 86400);
-    const hours = Math.floor((totalSeconds % 86400) / 3600);
-    const minutes = Math.floor((totalSeconds % 3600) / 60);
-    const seconds = totalSeconds % 60;
-
-    document.getElementById("timer").textContent =
-        `${days} дн ${hours} ч ${minutes} мин ${seconds} сек`;
-}
-
-updateTimer();
-setInterval(updateTimer, 1000);
-</script>
 
 </body>
 </html>
