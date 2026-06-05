@@ -1,42 +1,121 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>сите</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>сите</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Inter,Segoe UI,sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:
+        radial-gradient(circle at top left,#3b82f6,#111827 40%),
+        radial-gradient(circle at bottom right,#8b5cf6,#111827 40%);
+    color:white;
+}
+
+.card{
+    width:min(500px,90%);
+    padding:32px;
+    border-radius:24px;
+
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,0.15);
+
+    box-shadow:
+        0 8px 32px rgba(0,0,0,0.3);
+}
+
+h1{
+    font-size:1.8rem;
+    font-weight:600;
+    margin-bottom:10px;
+}
+
+p{
+    color:rgba(255,255,255,0.7);
+    margin-bottom:24px;
+}
+
+.timer-box{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:16px;
+    padding:18px;
+    text-align:center;
+}
+
+.timer-label{
+    font-size:0.9rem;
+    color:rgba(255,255,255,0.6);
+    margin-bottom:8px;
+}
+
+#timer{
+    font-size:1.4rem;
+    font-weight:600;
+}
+</style>
 </head>
 <body>
 
-<h3>скоро тут будет больше инфы</h3>
-<h3>домен сгниёт через: <span id="timer">-- дн -- ч -- мин -- сек</span></h3>
+<div class="card">
+    <h1>сите</h1>
+
+    <p>
+        скоро тут будет больше инфы
+    </p>
+
+    <div class="timer-box">
+        <div class="timer-label">
+            домен сгниёт через
+        </div>
+
+        <div id="timer">
+            -- дн -- ч -- мин -- сек
+        </div>
+    </div>
+</div>
 
 <script>
-    const target = new Date(2027, 5, 4, 0, 0, 0);
+const target = new Date(2027, 5, 4, 0, 0, 0);
 
-    function updateTimer() {
-        const now = new Date();
-        const diff = target - now;
+function updateTimer() {
+    const now = new Date();
+    const diff = target - now;
 
-        if (diff <= 0) {
-            document.getElementById('timer').innerHTML = '0 дн 0 ч 0 мин 0 сек (сгнил)';
-            return;
-        }
-
-        const totalSeconds = Math.floor(diff / 1000);
-        const days = Math.floor(totalSeconds / 86400);
-        const hours = Math.floor((totalSeconds % 86400) / 3600);
-        const minutes = Math.floor((totalSeconds % 3600) / 60);
-        const seconds = totalSeconds % 60;
-
-        document.getElementById('timer').innerHTML = 
-            days + ' дн ' + 
-            hours + ' ч ' + 
-            minutes + ' мин ' + 
-            seconds + ' сек';
+    if (diff <= 0) {
+        document.getElementById("timer").textContent =
+            "0 дн 0 ч 0 мин 0 сек (сгнил)";
+        return;
     }
 
-    updateTimer();
-    setInterval(updateTimer, 1000);
+    const totalSeconds = Math.floor(diff / 1000);
+
+    const days = Math.floor(totalSeconds / 86400);
+    const hours = Math.floor((totalSeconds % 86400) / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+
+    document.getElementById("timer").textContent =
+        `${days} дн ${hours} ч ${minutes} мин ${seconds} сек`;
+}
+
+updateTimer();
+setInterval(updateTimer, 1000);
 </script>
 
 </body>
